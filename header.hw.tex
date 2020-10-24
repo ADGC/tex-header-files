@@ -1,0 +1,259 @@
+\documentclass[10pt, leqno]{amsart}
+\usepackage{amsthm, amsmath, amssymb}
+\usepackage{mathrsfs,  mathtools}
+\usepackage{dsfont, bbding, moresize}
+\usepackage{setspace}
+\usepackage{bm} %% Addes the \bm command for bolding certain math symbols
+\usepackage[margin = 1.0in]{geometry}
+% \usepackage[table]{xcolor}
+% \usepackage{hyperref}
+
+
+\onehalfspacing
+
+\usepackage{tikz}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{arrows, calc, intersections}
+
+\input{header}
+
+%%=====================
+%% Theorem Environments
+%%=====================
+\theoremstyle{plain}      \newtheorem{thm}{Theorem}%[section]
+% \numberwithin{thm}{section}
+\theoremstyle{plain}      \newtheorem*{thm*}{Theorem}%[section]
+\theoremstyle{plain}      \newtheorem{lma}[thm]{Lemma}%[section]
+\theoremstyle{plain}      \newtheorem*{lma*}{Lemma}
+\theoremstyle{plain}      \newtheorem{cor}[thm]{Corollary}%[section]
+\theoremstyle{plain}      \newtheorem*{cor*}{Corollary}%[section]
+\theoremstyle{plain}      \newtheorem{claim}[thm]{Claim}%[section]
+\theoremstyle{plain}      \newtheorem*{claim*}{Claim}
+\theoremstyle{plain}      \newtheorem{prop}[thm]{Proposition}%[section]
+\theoremstyle{plain}      \newtheorem*{prop*}{Proposition}%[section]
+\theoremstyle{plain}      \newtheorem{observation}{Observation}
+\theoremstyle{plain}      \newtheorem{property}{Property}
+\theoremstyle{remark}     \newtheorem*{rmk}{Remark}
+\theoremstyle{remark}     \newtheorem*{rcl}{Recall}
+% \theoremstyle{remark}     \newtheorem*{fact}{Fact}
+\theoremstyle{definition} \newtheorem{defn}[thm]{Definition}%[section]
+\theoremstyle{definition} \newtheorem*{defn*}{Definition}%[section]
+\theoremstyle{definition} \newtheorem{ex}{Example}%[section]
+\theoremstyle{definition} \newtheorem*{ex*}{Example}%[section]
+
+
+%%==================================
+%% Solution and Problem Environments
+%%==================================
+
+
+%% New Solution Environments
+\newenvironment{soln}{\vskip5bp \paragraph{\bf Solution:}}{\hfill$\qed$ \newline}
+\newenvironment{resp}{\vskip5bp \paragraph{\bf Response:}}{\hspace{0pt} \newline}
+
+
+
+%% New Solution With Counter
+\newcounter{solno}
+\setcounter{solno}{0}
+\newenvironment{soln*}{
+  \vskip5bp
+  \addtocounter{solno}{1}
+  \paragraph{\bf Solution~{\arabic{solno}}:} } 
+{
+  \hfill$\qed$
+  % \vskip10bp
+}
+
+
+
+%% macros for automatic problem numbering
+\newcounter{probno}
+\setcounter{probno}{0}
+\newcounter{partno}
+\setcounter{partno}{0}
+
+%% Problem Environment
+\newenvironment{problem}{
+	\vskip10bp
+  	\setcounter{partno}{0} %Set Part number counter to zero
+      \setcounter{solno}{0} %Set the solution number counter to zero
+  	\addtocounter{probno}{1} %Update Problem number counter
+  	% \paragraph{
+  		\begin{center}{\bf Problem~{\arabic{probno}}} \end{center}
+      % {\bf Problem~{\arabic{probno}}}
+  	% }
+}
+{
+  \vskip10bp
+}
+
+%% Problem command
+\newcommand{\prob}{
+  \vskip10bp %Have some space at the top of the problem.
+  \setcounter{partno}{0} %Set Part number counter to zero
+  \setcounter{solno}{0} %Set the solution number counter to zero
+  \addtocounter{probno}{1} %Update Problem number counter
+  \begin{center}{\bf Problem~{\arabic{probno}}} \end{center} }
+%% Probpart command
+\newcommand{\probpart}{%\rule{0in}{0in}\\ \phantom{xxx}
+  \addtocounter{partno}{1}%
+  \noi {\bf Part \arabic{probno}\alph{partno}}.~~}
+\newcommand{\probcont}{%
+  {\bf Problem~\#{\arabic{probno}}}~(\emph{continued})}
+\newcommand{\probo}{
+  \setcounter{partno}{0}%
+  \addtocounter{probno}{1}%
+  {\bf (\#\arabic{probno})}\ \ }
+
+
+
+%==============================
+% Section Based Problem Command
+%==============================
+
+%% Prob Command with section based counting
+\newcommand{\secprob}{
+    \setcounter{probno}{0}
+
+    %% Problem Environment
+    \renewenvironment{problem}{
+        \vskip10bp
+        \setcounter{partno}{0} %Set Part number counter to zero
+        \setcounter{solno}{0} %Set the solution number counter to zero
+        \addtocounter{probno}{1} %Update Problem number counter
+        \begin{center}{ \bf Problem~{\arabic{section}}.{\arabic{probno}}} \end{center}
+    }
+    {
+      \vskip10bp
+    }
+
+    %% Problem Command
+    \renewcommand{\prob}{
+        \vskip10bp %Have some space at the top of the problem.
+        \setcounter{partno}{0} %Set Part number counter to zero
+        \setcounter{solno}{0} %Set the solution number counter to zero
+        \addtocounter{probno}{1} %Update Problem number counter
+        \begin{center}{\bf Problem~{\arabic{section}}.{\arabic{probno}}} \end{center} 
+    }
+
+    %% Problem Part Command
+    \renewcommand{\probpart}{%\rule{0in}{0in}\\ \phantom{xxx}
+        \addtocounter{partno}{1}%
+        \noi {\bf Part~{\arabic{section}}.\arabic{probno}\alph{partno}}.~~
+    }
+}
+
+
+
+%====================================
+% Remove Section Based Prob Numbering
+%====================================
+
+\newcommand{\nonsecprob}{
+    \setcounter{probno}{0}
+
+    %% Problem Environment
+    \renewenvironment{problem}{
+        \vskip10bp
+        \setcounter{partno}{0} %Set Part number counter to zero
+        \setcounter{solno}{0} %Set the solution number counter to zero
+        \addtocounter{probno}{1} %Update Problem number counter
+        \begin{center}{ \bf Problem~{\arabic{probno}}} \end{center}
+    }
+    {
+      \vskip10bp
+    }
+
+    %% Problem Command
+    \renewcommand{\prob}{
+        \vskip10bp %Have some space at the top of the problem.
+        \setcounter{partno}{0} %Set Part number counter to zero
+        \setcounter{solno}{0} %Set the solution number counter to zero
+        \addtocounter{probno}{1} %Update Problem number counter
+        \begin{center}{\bf Problem~{\arabic{probno}}} \end{center} 
+    }
+
+    %% Problem Part Command
+    \renewcommand{\probpart}{%\rule{0in}{0in}\\ \phantom{xxx}
+        \addtocounter{partno}{1}%
+        \noi {\bf Part~\arabic{probno}\alph{partno}}.~~
+    }
+}
+
+
+%================================================
+% Bonus Problem Related Environments and Commands
+%================================================
+\newcounter{bonusno}
+\setcounter{bonusno}{0}
+
+%% Bonus Environement with Counter
+\newenvironment{bonus}{
+    \vskip10bp
+    \setcounter{partno}{0} %Set Part number counter to zero
+    \setcounter{solno}{0} %Set the solution number counter to zero
+    \addtocounter{bonusno}{1} %Update Problem number counter
+
+    \renewcommand{\probpart}{%\rule{0in}{0in}\\ \phantom{xxx}
+        \addtocounter{partno}{1}%
+        \noi {\bf Part B\arabic{bonusno}\alph{partno}}.~~
+    }
+    
+    \begin{center}{ \bf Bonus Problem~{\arabic{probno}}} \end{center}
+}
+{
+  \hspace{0pt} \newline
+}
+
+%% The Bonus Command
+\newcommand{\thebonus}{
+    \setcounter{probno}{0}
+
+    %% Problem Environment
+    \renewenvironment{problem}{
+        \vskip10bp
+        \setcounter{partno}{0} %Set Part number counter to zero
+        \setcounter{solno}{0} %Set the solution number counter to zero
+        \addtocounter{probno}{1} %Update Problem number counter
+        \begin{center}{ \bf Bonus Problem~{\arabic{probno}}} \end{center}
+    }
+    {
+      \hspace{0pt} \newline
+    }
+
+    %% Problem Command
+    \renewcommand{\prob}{
+        \vskip10bp %Have some space at the top of the problem.
+        \setcounter{partno}{0} %Set Part number counter to zero
+        \setcounter{solno}{0} %Set the solution number counter to zero
+        \addtocounter{probno}{1} %Update Problem number counter
+        \begin{center}{\bf Bonus Problem~{\arabic{probno}}} \end{center} 
+    }
+
+    %% Problem Part Command
+    \renewcommand{\probpart}{%\rule{0in}{0in}\\ \phantom{xxx}
+        \addtocounter{partno}{1}%
+        \noi {\bf Part B\arabic{probno}\alph{partno}}.~~
+    }
+}
+
+\renewcommand{\qedsymbol}{\SquareShadowBottomRight}
+
+% %% Bonus Environement without Counter
+% \newenvironment{bonus*}{
+%     \vskip10bp
+%     \setcounter{partno}{0} %Set Part number counter to zero
+%     \setcounter{solno}{0} %Set the solution number counter to zero
+%     \addtocounter{bonusno}{1} %Update Problem number counter
+
+%     \renewcommand{\probpart}{%\rule{0in}{0in}\\ \phantom{xxx}
+%         \addtocounter{partno}{1}%
+%         \noi {\bf Bonus Part (\alph{partno})}.~~
+%     }
+    
+%     \begin{center}{ \bf Bonus Problem}} \end{center}
+% }
+% {
+%   \hspace{0pt} \newline
+% }

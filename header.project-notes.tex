@@ -1,0 +1,72 @@
+\documentclass[10pt, leqno, twoside, openany]{amsbook}
+
+\usepackage{amsthm, amsmath, amssymb}
+\usepackage{bm} %% Adds the \bm command for bolding certain math symbols
+\usepackage{mathrsfs,  mathtools}
+\usepackage{dsfont, bbding, moresize}
+\usepackage{setspace}
+\usepackage[margin = 1.0in]{geometry}
+\usepackage{hyperref}
+\usepackage{subfiles}
+\usepackage{pgfplots}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{subcaption}
+
+
+
+\onehalfspacing
+
+\usepackage{tikz}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{arrows, calc, intersections}
+
+\input{header}
+
+%%========================
+%% Project Specific Macros
+%%========================
+\newcommand{\earsdown}{
+\begin{tikzpicture}[scale=0.1]
+	\draw (-2.5, 0) -- (-1.5,0);
+	\draw (-0.5, 0) -- (0.5,0);
+	\draw (1.5, 0) -- (2.5,0);
+	\draw (-1.5,0) arc (180:360:0.5);
+	\draw (0.5,0) arc (180:360:0.5);
+\end{tikzpicture}
+}
+
+\newcommand{\earsup}{
+\begin{tikzpicture}[scale=0.1]
+	\draw (-2.5, 0) -- (-1.5,0);
+	\draw (-0.5, 0) -- (0.5,0);
+	\draw (1.5, 0) -- (2.5,0);
+	\draw (-1.5,0) arc (180:0:0.5);
+	\draw (0.5,0) arc (180:0:0.5);
+\end{tikzpicture}
+}
+
+
+%%=====================
+%% Theorem Environments
+%%=====================
+\theoremstyle{plain}      \newtheorem{thm}{Theorem}%[section]
+% \numberwithin{thm}{section}
+\theoremstyle{plain}      \newtheorem*{thm*}{Theorem}%[section]
+\theoremstyle{plain}      \newtheorem{lma}[thm]{Lemma}%[section]
+\theoremstyle{plain}      \newtheorem*{lma*}{Lemma}
+\theoremstyle{plain}      \newtheorem{cor}[thm]{Corollary}%[section]
+\theoremstyle{plain}      \newtheorem*{cor*}{Corollary}%[section]
+\theoremstyle{plain}      \newtheorem{claim}[thm]{Claim}%[section]
+\theoremstyle{plain}      \newtheorem*{claim*}{Claim}
+\theoremstyle{plain}      \newtheorem{prop}[thm]{Proposition}%[section]
+\theoremstyle{plain}      \newtheorem*{prop*}{Proposition}%[section]
+\theoremstyle{plain}      \newtheorem{observation}{Observation}
+\theoremstyle{plain}      \newtheorem{property}{Property}
+\theoremstyle{remark}     \newtheorem*{rmk}{Remark}
+\theoremstyle{remark}     \newtheorem*{rcl}{Recall}
+% \theoremstyle{remark}     \newtheorem*{fact}{Fact}
+\theoremstyle{definition} \newtheorem{defn}[thm]{Definition}%[section]
+\theoremstyle{definition} \newtheorem*{defn*}{Definition}%[section]
+\theoremstyle{definition} \newtheorem{ex}{Example}[section]
+\theoremstyle{definition} \newtheorem*{ex*}{Example}%[section]

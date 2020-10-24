@@ -1,0 +1,88 @@
+% \documentclass[leqno]{beamer}
+\documentclass[envcountsect, leqno]{beamer}
+
+\setbeamertemplate{theorems}[ams style] 
+
+\usetheme{Darmstadt}
+\usecolortheme[rgb={1, 0.15, 0}]{structure}
+
+%The following code inserts frame numbers
+\newcommand*\oldmacro{}%
+\let\oldmacro\insertshorttitle%
+\renewcommand*\insertshorttitle{%
+  \oldmacro\hfill%
+  \insertframenumber\,/\,\inserttotalframenumber}
+
+
+\usepackage[english]{babel}
+\usepackage{times}
+\usepackage[T1]{fontenc}
+\usepackage{mathrsfs}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{calc, ifsym, bbding, dsfont, phaistos, manfnt}
+\usepackage{caption, subcaption}
+\captionsetup{compatibility=false}
+
+% The following code fixes a compatibility issue
+\makeatletter
+\let\@@magyar@captionfix\relax
+\makeatother
+
+
+\usepackage[accumulated]{beamerseminar}
+\usepackage{beamertexpower}
+\usepackage{beamerthemeshadow}
+
+\usepackage{hyperref}
+% \usepackage{url}
+
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{xintfrac}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{arrows, calc, intersections}
+\usetikzlibrary{positioning, shadings, shadows, shapes.arrows}
+
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+\input{header.tex}
+
+%%=====================
+%% Theorem Environments
+%%=====================
+\theoremstyle{plain}      \newtheorem{thm}{Theorem}%[section]
+% \numberwithin{thm}{section}
+\theoremstyle{plain}      \newtheorem*{thm*}{Theorem}%[section]
+\theoremstyle{plain}      \newtheorem{lma}[thm]{Lemma}%[section]
+\theoremstyle{plain}      \newtheorem*{lma*}{Lemma}
+\theoremstyle{plain}      \newtheorem{cor}[thm]{Corollary}%[section]
+\theoremstyle{plain}      \newtheorem*{cor*}{Corollary}%[section]
+\theoremstyle{plain}      \newtheorem{claim}[thm]{Claim}%[section]
+\theoremstyle{plain}      \newtheorem*{claim*}{Claim}
+\theoremstyle{plain}      \newtheorem{prop}[thm]{Proposition}%[section]
+\theoremstyle{plain}      \newtheorem*{prop*}{Proposition}%[section]
+\theoremstyle{plain}      \newtheorem{observation}{Observation}
+\theoremstyle{plain}      \newtheorem{property}{Property}
+\theoremstyle{remark}     \newtheorem*{rmk}{Remark}
+\theoremstyle{remark}     \newtheorem*{rcl}{Recall}
+% \theoremstyle{remark}     \newtheorem*{fact}{Fact}
+\theoremstyle{definition} \newtheorem{defn}[thm]{Definition}%[section]
+\theoremstyle{definition} \newtheorem*{defn*}{Definition}%[section]
+\theoremstyle{definition} \newtheorem{ex}{Example}%[section]
+\theoremstyle{definition} \newtheorem*{ex*}{Example}%[section]
+
+
+\renewcommand{\qedsymbol}{\SquareShadowBottomRight}
+
+% \renewenvironment{cases}{
+% 	$
+% 	\left\{
+%     	\begin{aligned}
+%     		&
+% }
+% {
+	
+% 		\end{aligned}
+% 	\right.
+% 	$
+% }

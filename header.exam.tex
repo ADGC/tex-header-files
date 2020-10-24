@@ -1,0 +1,55 @@
+\documentclass[12pt, addpoints, answers]{exam}
+
+\usepackage{tikz}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{arrows, calc, intersections, 3d}
+\usepackage{tasks}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{wrapfig}
+\usepackage{bm}
+
+
+\headheight 12pt
+\headsep 25pt
+\topmargin 0pt
+\oddsidemargin 0pt
+\textheight 603pt
+\textwidth 430pt
+
+
+\pagestyle{headandfoot}
+
+
+\header{\class}{\examnum}{\examdate}
+\footer{}{Page \thepage\ of \numpages}{}
+
+\runningheadrule
+\runningfootrule
+
+\newcommand{\midmatch}{\hspace{0.75in}\underline{\hspace{0.5in}}}
+\newcommand{\leftmatch}{\underline{\hspace{0.4in}}}
+\newcommand{\blank}[1]{\underline{\hspace{#1}}}
+
+
+\newcommand{\FirstPageSetup}{
+	\thispagestyle{empty} %Only footer is the page number
+	\noi {\bf \class}\hfill {\bf Name}\rule{6cm}{1pt} \\
+	\noi \examnum ~~ \term \hfill {Section}\rule{2cm}{1pt}
+	\vskip .2in
+}
+
+
+% \def\SolnColor{blue}
+% \newenvironment{soln}{
+% 	{\color{\SolnColor}
+	
+% 	}
+% }
+
+
+\input{header}
